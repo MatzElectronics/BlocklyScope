@@ -40,6 +40,9 @@ const neDownloadFailed             = 102;
 
 
 $(document).ready(function () {
+        $('.auth-true').css('display', $(this).attr('displayas'));
+        $('.auth-false').css('display', 'none');
+
     find_client();
 });
 
