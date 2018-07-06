@@ -40,6 +40,7 @@
         <script type="text/javascript" src="cdn/blocklypropclient.js"></script>
         <script type="text/javascript" src="cdn/blocklyc.js"></script>
         <script type="text/javascript" src="cdn/utils.js"></script>
+        <script type="text/javascript" src="cdn/_messages.js"></script>
 
         <!-- Style sheets -->
         <link href="cdn/libs.css" rel="stylesheet" type="text/css" />
@@ -57,31 +58,22 @@
                                 </div>
                                 <div style="display:inline;">
                                     <div style="width:100%; ">
-                                        <div style="display:inline; padding-left: 10px; line-height: 30px;" class="auth-true">
+                                        <div style="display:inline; padding-left: 10px; line-height: 30px;">
                                             <span id="client-searching" class="bp-client-warning">
-                                                <a class="client-searching-link" data-toggle="modal" data-target="#client-download-modal" href="#">
-                                                    <svg preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M7,8 L8,8 8,11 8,11 7,11 Z" style="stroke-width:1px;stroke:#8a6d3b;fill:none;"/><circle cx="7.5" cy="7.5" r="6" style="stroke-width:1.3px;stroke:#8a6d3b;fill:none;"/><circle cx="7.5" cy="5" r="1.25" style="stroke-width:0;fill:#8a6d3b;"/></svg>
-                                                    <span class="keyed-lang-string" key="editor_client_checking"></span>
-                                                </a>
+                                                Searching for client...
                                             </span>
                                             <span id="client-unavailable" class="bp-client-danger hidden">
-                                                <a class="client-unavailable-link" data-toggle="modal" data-target="#client-download-modal" href="#">
-                                                    <svg preserveAspectRatio="xMinYMin" xmlns="http://www.w3.org/2000/svg" width="15" height="15"><path d="M1,12 L2,13 13,13 14,12 8,2 7,2 1,12 Z M7.25,6 L7.75,6 7.5,9 Z" style="stroke-width:1.5px;stroke:#a94442;fill:none;"/><circle cx="7.5" cy="10.75" r="1" style="stroke-width:0;fill:#a94442;"/><circle cx="7.5" cy="5.5" r="1" style="stroke-width:0;fill:#a94442;"/></svg>
-                                                    <span class="keyed-lang-string" key="editor_client_not-available"></span>
-                                                </a>
+                                                Client disconnected!
                                             </span>
                                             <span id="client-available" class="bp-client-available hidden">
-                                                <span class="keyed-lang-string" key="editor_client_available"></span>
+                                                Client connected.
                                             </span> 
                                             <span id="client-available-short" class="hidden">
-                                                <span class="keyed-lang-string" key="editor_client_available_short"></span>
+                                                Client connected.
                                             </span>
                                             <span id="client-available-long" class="hidden">
-                                                <span class="keyed-lang-string" key="editor_client_available"></span>
+                                                Client connected.
                                             </span>
-                                        </div>
-                                        <div style="display:inline; padding-left: 10px; line-height: 30px;" class="auth-false" displayas="inline">
-                                            <span style="font-size:13px;"><span class="keyed-lang-string" key="editor_demonstration_mode_info"></span></span>
                                         </div>
                                         <div class="project-name-wrapper" align="right">        
                                             <span id="project-icon" class="editor-icon"></span> <span class="project-name"></span> <span class="project-owner"></span>
@@ -89,20 +81,14 @@
                                     </div>
                                     <div style="width:100%; padding-bottom: 5px;">
                                         <div style="display:inline; padding-left: 10px;" id="board-action-buttons">
-
-
-                                            <button id="prop-btn-comp" onclick="compile()" data-toggle="tooltip" title="" data-placement="bottom" href="#" class="btn btn-success btn-circle auth-true" displayas="inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="15"><path d="M2.25,6 L5.5,9.25 12,2.5 13.5,4 5.5,12 1,7.5 Z" style="stroke:#fff;stroke-width:1;fill:#fff;"/></svg></button>
-                                            <button id="prop-btn-ram" onclick="loadInto('Load into RAM', 'bin', 'CODE', 'RAM')" data-toggle="tooltip" title="" data-placement="bottom" class="btn btn-success btn-circle disabled auth-true" displayas="inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="15"><path d="M5.5,0 L8.5,0 8.5,9 12.5,9 7,14.5 1.5,9 5.5,9 Z" style="stroke:#fff;stroke-width:1;fill:#fff;"/></svg></button>
-                                            <button id="prop-btn-eeprom" onclick="loadInto('Load into EEPROM', 'eeprom', 'CODE', 'EEPROM')" data-toggle="tooltip" title="" data-placement="bottom" class="btn btn-success btn-circle disabled auth-true" displayas="inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="15"><path d="M5.5,0 L8.5,0 8.5,6 12.5,6 7,11.5 1.5,6 5.5,6 Z M0.5,12 L13.5,12 13.5,14.5 0.5,14.5 Z" style="stroke:#fff;stroke-width:1;fill:#fff;"/></svg></button>
-
-
                                             <button id="prop-btn-term" onclick="serial_console()" data-toggle="tooltip" title="" data-placement="bottom" class="btn btn-primary btn-circle disabled auth-true" displayas="inline-block"><svg xmlns="http://www.w3.org/2000/svg" width="14" height="15">
                                                 <path d="M3,4.5 L10,4.5 M3,6.5 L6,6.5 M3,8.5 L8,8.5 M1,1 L13,1 13,14 1,14 1,1 M2,0 L12,0 M14,2 L14,13 M12,15 L2,15 M0,2 L0,13" style="stroke:#fff;stroke-width:1;fill:none;"/></svg></button>
                                             <button id="prop-btn-graph" onclick="graphing_console()" data-toggle="tooltip" title="" data-placement="bottom" class="btn btn-primary btn-circle disabled auth-true" displayas="inline-block" id="open-graph-output"><svg xmlns="http://www.w3.org/2000/svg" width="13" height="14">
                                                 <path d="M.5,0 L.5,13.5 L12.5,13.5 M3.5,0 L3.5,13.5 M6.5,0 L6.5,13.5 M9.5,0 L9.5,13.5 M12.5,0 L12.5,13.5 M.5,3.5 L12.5,3.5 M.5,7 L12.5,7 M.5,10.5 L12.5,10.5 M.5,.5 L12.5,.5" style="stroke:rgba(255,255,255,.6);stroke-width:1;fill:none;"/>
                                                 <path d="M0,13 L6,5 L9,8 L14,2" style="stroke:#fff;stroke-width:2;fill:none;"/></svg></button>
-                                            <span style="color:#777; font-size:11px;" class="auth-false" displayas="inline"><a href="login.jsp" class="url-prefix"><span class="keyed-lang-string" key="editor_demonstration_mode_instructions"></span></a>&nbsp;&nbsp;&nbsp;</span>
-                                            <span style="color:#ddd;" class="keyed-lang-string" key="editor_offline_title"></span>
+                                            &nbsp;&nbsp;
+                                            <select class="dropdown port-dropdown auth-true" displayas="inline-block" title="Ports" data-placement="left" id="comPort"></select>&nbsp;&nbsp;
+Baudrate: <input type="text" value="115200" onchange="setBaudrate(parseInt(this.value)); console.log(baudrate);"/>
                                         </div>
                                     </div>
                                 </div>
@@ -112,14 +98,6 @@
                 </tr>
                 <tr>
                     <td id="content">
-                        <div id="content_blocks">
-                        </div>
-                        <div id="content_propc">
-                            <div id="code-propc"></div>
-                        </div>
-                        <div id="content_xml">
-                            <div id="code-xml"></div>
-                        </div>
                     </td>
                 </tr>
             </table>
